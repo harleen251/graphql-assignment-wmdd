@@ -46,18 +46,23 @@ const AddPerson = () => {
     <Form
       name='add-person-form'
       layout='inline'
-      size='large'
+      size='small'
       style={{ marginBottom: '40px' }}
       form={form}
       onFinish={onFinish}
+      title='Add New Person'
     >
       <Form.Item
+        label='First Name: '
         name='firstName'
         rules={[{ required: true, message: 'Please enter a first name' }]}
       >
         <Input placeholder='First Name' />
       </Form.Item>
-      <Form.Item name='lastName' rules={[{ required: true, message: 'Please enter a last name' }]}>
+      <Form.Item 
+        label='First Name: '
+        name='lastName' 
+        rules={[{ required: true, message: 'Please enter a last name' }]}>
         <Input placeholder='Last Name' />
       </Form.Item>
       <Form.Item shouldUpdate={true}>

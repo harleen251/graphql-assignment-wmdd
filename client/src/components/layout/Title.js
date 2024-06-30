@@ -1,4 +1,9 @@
-const Title = () => {
+import React from 'react';
+import { Typography } from 'antd';
+const { Title: AntTitle } = Typography;
+
+
+export const MainTitle = () => {
     const styles = getStyles()
   
     return <h1 style={styles.title}>PEOPLE AND THEIR CARS</h1>
@@ -12,4 +17,11 @@ const Title = () => {
     }
   })
   
-  export default Title
+ 
+
+
+
+export const Title = ({ text, level = 4 }) => {
+  return <AntTitle level={level}>{text}</AntTitle>;
+};
+

@@ -119,11 +119,11 @@ const peopleArray = [
 
     type Mutation {
         addPerson(id: String!, firstName: String!, lastName: String!): Person
-        addCar(year: Int!, make: String!, model: String!, price: Float!, personId: String!): Car
+        addCar(id: String!, year: Int!, make: String!, model: String!, price: Float!, personId: String!): Car
         updatePerson(id: String!, firstName: String, lastName: String): Person
-        updateCar(id: String!, year: String, make: String, model: String, price: String, personId: String): Car
+        updateCar(id: String!, year: Int, make: String, model: String, price: Float, personId: String): Car
         deletePerson(id: String!): Person
-        deleteCar(id: String!): Car
+        removeCar(id: String!): Car
     }
 
     type PersonWithCars {
@@ -175,14 +175,14 @@ const peopleArray = [
             return newCar;
         },
         updateCar: (_, { id, year, make, model, price, personId }) => {
-            const car = find(cars, { id });
-            if (!car) return null;
-            car.year = year || car.year;
-            car.make = make || car.make;
-            car.model = model || car.model;
-            car.price = price || car.price;
-            car.personId = personId || car.personId;
-            return car;
+          const car = find(cars, { id });
+          if (!car) return null;
+          car.year = year || car.year;
+          car.make = make || car.make;
+          car.model = model || car.model;
+          car.price = price || car.price;
+          car.personId = personId || car.personId;
+          return car;
         },
         deletePerson: (_, { id }) => {
             const person = find(peopleArray, { id });
@@ -191,11 +191,11 @@ const peopleArray = [
             remove(peopleArray, { id });
             return person;
         },
-        deleteCar: (_, { id }) => {
-            const car = find(cars, { id });
-            if (!car) return null;
-            remove(cars, { id });
-            return car;
+        removeCar: (_, { id }) => {
+          const car = find(cars, { id });
+          if (!car) return null;
+          remove(cars, { id });
+          return car;
         }
     }
   }
